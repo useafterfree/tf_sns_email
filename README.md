@@ -41,23 +41,37 @@ creates using the `additional_tags` input when calling the module.
     }
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Requirements
+
+| Name | Version |
+|------|---------|
+| terraform | >= 0.12 |
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| aws | n/a |
+| template | n/a |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|:----:|:-----:|:-----:|
-| additional_tags | The tags to apply to resources created by this module | map | `<map>` | no |
-| display_name | Name shown in confirmation emails | string | `tf_sns_email` | no |
-| email_address | Email address to send notifications to | string | - | yes |
-| owner | Sets the owner tag on the CloudFormation stack | string | `tf_sns_email` | no |
-| protocol | SNS Protocol to use. email or email-json | string | `email` | no |
-| stack_name | Cloudformation stack name that wraps the SNS topic. Must be unique. | string | `tf-sns-email` | no |
+|------|-------------|------|---------|:--------:|
+| additional\_tags | The tags to apply to resources created by this module | `map(string)` | `{}` | no |
+| display\_name | Name shown in confirmation emails | `string` | `"tf_sns_email"` | no |
+| emails | Email addresses to send notifications to | `list(string)` | <pre>[<br>  "a@a.com"<br>]</pre> | no |
+| owner | Sets the owner tag on the CloudFormation stack | `string` | `"tf_sns_email"` | no |
+| protocol | SNS Protocol to use. email or email-json | `string` | `"email"` | no |
+| stack\_name | Cloudformation stack name that wraps the SNS topic. Must be unique. | `string` | `"tf-sns-email"` | no |
+| topic\_name | SNS Topic name. Must be unique. | `string` | `"EmailSNSTopic"` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
 | arn | Email SNS topic ARN |
+| emails | Email SNS topic ARN |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 

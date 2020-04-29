@@ -4,15 +4,22 @@ variable "additional_tags" {
   type        = map(string)
 }
 
+variable "topic_name" {
+  type        = string
+  description = "SNS Topic name. Must be unique."
+  default     = "EmailSNSTopic"
+}
+
 variable "display_name" {
   type        = string
   description = "Name shown in confirmation emails"
   default     = "tf_sns_email"
 }
 
-variable "email_address" {
-  type        = string
-  description = "Email address to send notifications to"
+variable "emails" {
+  type        = list(string)
+  description = "Email addresses to send notifications to"
+  default     = ["a@a.com"]
 }
 
 variable "owner" {
@@ -32,4 +39,3 @@ variable "stack_name" {
   description = "Cloudformation stack name that wraps the SNS topic. Must be unique."
   default     = "tf-sns-email"
 }
-
